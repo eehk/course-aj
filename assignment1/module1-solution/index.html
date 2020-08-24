@@ -8,22 +8,26 @@
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <style>
       .message { font-size: 1.3em; font-weight: bold; }
+      .green { color: green; }
+      .red { color: red; }
+      .form-control.green { border-color: green; }
+      .form-control.red { border-color: red; }
+
     </style>
   </head>
 <body ng-app="LunchCheck">
    <div class="container">
      <h1>Lunch Checker</h1>
-       <div style="color:red;">*CAN* handle empty items e.g. ,,,,a,,,b,a,,a or ,,,,,,</div>
        <div ng-controller="LunchCheckController"> 
          <div class="form-group">
-             <input ng-model="lunch_menu" type="text"
+             <input ng-model="lunch_menu" id="lunch-menu" type="text"
              placeholder="list comma separated dishes you usually have for lunch"
-             class="form-control">
+             class="form-control {{msgColor}}">
          </div>
          <div class="form-group">
              <button ng-click="checkItems();" class="btn btn-default">Check If Too Much</button>
          </div>
-         <div class="form-group message">
+         <div class="form-group message {{msgColor}}">
            {{msg}}
          </div>
        </div>
